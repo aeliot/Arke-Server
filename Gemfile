@@ -47,4 +47,7 @@ end
 gem 'rails_12factor', group: :production
 gem 'unicorn'
 
+gem 'databasedotcom'
+gem 'databasedotcom-rails'
+
 ruby "2.0.0"
