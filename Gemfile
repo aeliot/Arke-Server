@@ -50,4 +50,7 @@ gem 'unicorn'
 gem 'databasedotcom'
 gem 'databasedotcom-rails'
 
+gem 'omniauth'
+gem 'omniauth-salesforce'
+
 ruby "2.0.0"
