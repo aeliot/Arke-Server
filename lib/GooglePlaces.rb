@@ -5,12 +5,12 @@ require "sinatra/base"
 
 class GooglePlaces
   include HTTParty
-  base_uri 'https://maps.googleapis.com/maps/api/place/textsearch/json'
+  base_uri 'https://maps.googleapis.com/maps/api/place/textsearch'
   default_params :key => 'AIzaSyAAc16615kw98ZLpwRZhckJkhO-A55Xd-c', :sensor => 'true'
   format :json
 
   def self.getLocation(address)
-    result = JSON.parse(HTTParty.get('', :query => {:query => address.tr(" ", "+")}).body)
+    result = JSON.parse(HTTParty.get('/json', :query => {:query => address.tr(" ", "+")}).body)
     
     logger.debug(result)
 
