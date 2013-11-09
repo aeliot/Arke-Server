@@ -10,7 +10,10 @@ class GooglePlaces
 
   def self.getLocation(address)
     result = get('', :query => {:query => address.tr(" ", "+")}).parsed_response
-    result["results"].first["geometry"]["location"]
+    lat = result["results"].first["geometry"]["location"]["lat"]
+    lng = result["results"].first["geometry"]["location"]["lng"]
+    logger.info "Lat: #{lat},  Lng: #{lng}   "
+    {:lat => lat, :lng => lng}
   end
 
 end

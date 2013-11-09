@@ -40,8 +40,8 @@ class Arke < Sinatra::Base
       latlong = GooglePlaces::getLocation(person.MailingStreet)
       locations.push({:name => person.Name, 
                        :address => person.MailingStreet, 
-                       :lat => latlong["lat"], 
-                       :lng => latlong["lng"]})
+                       :lat => latlong[:lat], 
+                       :lng => latlong[:lng]})
     end
     erb :index
   end
