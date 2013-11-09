@@ -1,8 +1,9 @@
 <table>
-<tr><th>Objects</th></tr>
-<% @objects.each do |obj| %>
+<tr><th>Contact</th><th>Address</th></tr>
+<% @contacts.each do |contact| %>
    <tr>
-	<td><%= obj %></td>
+	<td><%= contact.Name %></td>
+	<td><%= contact.MailingAddress %></td>
    </tr>
 <% end %>
 </table>
