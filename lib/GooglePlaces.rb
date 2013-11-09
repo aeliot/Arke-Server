@@ -1,4 +1,6 @@
 require 'httparty'
+require 'json'
+
 
 class GooglePlaces
   include HTTParty
@@ -7,7 +9,7 @@ class GooglePlaces
   format :json
 
   def self.getLocation(address)
-    result = get('json', :query => address.tr(" ", "+")
+    result = JSON.parse(get('json', :query => address.tr(" ", "+"))
     result["results"].first["geometry"]["location"]
   end
 
