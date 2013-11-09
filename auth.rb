@@ -2,7 +2,7 @@ require "sinatra/base"
 require 'force'
 require "omniauth"
 require "omniauth-salesforce"
-
+require 'databasedotcom'
 
 class Arke < Sinatra::Base
 
@@ -36,7 +36,7 @@ class Arke < Sinatra::Base
   get '/' do
     logger.info "Visited home page"
     contact_class = client.materialize("Contact")
-    # @contacts = Contact.all
+    @contacts = Contact.all
     erb :index
   end
 
