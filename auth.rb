@@ -1,5 +1,4 @@
 require "sinatra/base"
-require 'force'
 require "omniauth"
 require "omniauth-salesforce"
 require 'databasedotcom'
@@ -24,16 +23,15 @@ class Arke < Sinatra::Base
 
   helpers do
     def client
-      @client ||= Force.new instance_url:  session['instance_url'], 
-                            oauth_token:   session['token'],
-                            refresh_token: session['refresh_token'],
-                            client_id:     ENV['SALESFORCE_KEY'],
-                            client_secret: ENV['SALESFORCE_SECRET']
+      @client ||= Databasedotcom::Client.new :client_id => ENV['SALESFORCE_KEY'],
+      :client_secret => ENV['SALESFORCE_SECRET']
     end
   end
 
 
   get '/' do
+    client.authenticate request.env['omniauth.auth']
+    
     logger.info "Visited home page"
     contact_class = client.materialize("Contact")
     @contacts = Contact.all
