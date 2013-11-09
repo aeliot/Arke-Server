@@ -36,10 +36,10 @@ class Arke < Sinatra::Base
     contacts = Contact.all
 
     @locations = Array.new
-    contacts.each do |contact|
-      latlong = GooglePlaces::getLocation(contact.MailingStreet)
-      locations.push({:name => contact.Name, 
-                       :address => contact.MailingStreet, 
+    contacts.each do |person|
+      latlong = GooglePlaces::getLocation(person.MailingStreet)
+      locations.push({:name => person.Name, 
+                       :address => person.MailingStreet, 
                        :lat => latlong["lat"], 
                        :lng => latlong["lng"]})
     end
