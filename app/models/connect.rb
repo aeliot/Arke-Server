@@ -6,7 +6,7 @@ class Connect < ActiveRecord::Base
   configure do
     enable :logging
     enable :sessions
-    set :show_excetions, fasle
+    set :show_excetions, false
     set :session_secret, ENV['SECRET']
   end
 
