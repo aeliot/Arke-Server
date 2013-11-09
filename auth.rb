@@ -2,6 +2,7 @@ require "sinatra/base"
 require "omniauth"
 require "omniauth-salesforce"
 require 'databasedotcom'
+require 'lib/GooglePlaces'
 
 class Arke < Sinatra::Base
 
