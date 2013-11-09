@@ -24,7 +24,8 @@ class Arke < Sinatra::Base
   helpers do
     def client
       @client ||= Databasedotcom::Client.new :client_id => ENV['SALESFORCE_KEY'],
-      :client_secret => ENV['SALESFORCE_SECRET']
+      :client_secret => ENV['SALESFORCE_SECRET'],
+      :host => "login.salesforce.com"
     end
   end
 
