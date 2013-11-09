@@ -9,7 +9,7 @@ class GooglePlaces
   format :json
 
   def self.getLocation(address)
-    result = JSON.parse(get('', :query => {:query => address.tr(" ", "+")}).parsed_response )
+    result = get('', :query => {:query => address.tr(" ", "+")}).parsed_response
     result[:results].first["geometry"]["location"]
   end
 
