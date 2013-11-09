@@ -25,8 +25,8 @@ class Arke < Sinatra::Base
     client.authenticate :token => session['token'], :instance_url => session['instance_url']
 
     logger.info "Visited home page"
-    #contact_class = client.materialize("Contact")
-    @objects = client.list_sobjects
+    contact_class = client.materialize("Contact")
+    @contacts = Contact.all
     erb :index
   end
 
