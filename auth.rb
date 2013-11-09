@@ -72,7 +72,7 @@ class Arke < Sinatra::Base
 
 
   error do
-    "There was an error.  Perhaps you need to re-authenticate to /authenticate ?  Here are the details: "
+    "Adam has fucked up again! "
   end
 
   run! if app_file == $0
