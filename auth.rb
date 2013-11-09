@@ -20,17 +20,11 @@ class Arke < Sinatra::Base
     redirect '/authenticate' unless session[:instance_url]
   end
 
-
-  helpers do
-    def client
-      @client ||= Databasedotcom::Client.new :client_id => ENV['SALESFORCE_KEY'],
+  get '/' do
+    client = Databasedotcom::Client.new :client_id => ENV['SALESFORCE_KEY'],
       :client_secret => ENV['SALESFORCE_SECRET'],
       :host => "login.salesforce.com"
-    end
-  end
 
-
-  get '/' do
     client.authenticate request.env['omniauth.auth']
     
     logger.info "Visited home page"
