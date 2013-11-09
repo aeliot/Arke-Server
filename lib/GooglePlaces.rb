@@ -13,7 +13,7 @@ class GooglePlaces
     result = get('', :query => {:query => address.tr(" ", "+")}).parsed_response
     lat = result["results"].first["geometry"]["location"]["lat"]
     lng = result["results"].first["geometry"]["location"]["lng"]
-    logger.info "Lat: #{lat},  Lng: #{lng}   "
+    logger.info "Lat: %d,  Lng: %d " % [lat, lng]
     {:lat => lat, :lng => lng}
   end
 
