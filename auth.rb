@@ -35,7 +35,7 @@ class Arke < Sinatra::Base
     contact_class = client.materialize("Contact")
     contacts = Contact.all
 
-    @locations = Array.new
+    locations = Array.new
     contacts.each do |person|
       latlong = GooglePlaces::getLocation(person.MailingStreet)
       locations.push({:name => person.Name, 
