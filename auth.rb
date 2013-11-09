@@ -2,7 +2,7 @@ require "sinatra/base"
 require "omniauth"
 require "omniauth-salesforce"
 require 'databasedotcom'
-require File.join(File.dirname(__FILE__), '..',  'lib/GooglePlaces')
+require 'lib/GooglePlaces'
 
 class Arke < Sinatra::Base
 
