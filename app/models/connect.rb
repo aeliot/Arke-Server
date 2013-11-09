@@ -1,5 +1,6 @@
 require "omniauth"
 require "omniauth-salesforce"
+require 'force'
 
 class Connect < ActiveRecord::Base
 
@@ -63,5 +64,8 @@ class Connect < ActiveRecord::Base
     redirect "/auth/salesforce"
   end
 
+error do
+    "There was an error.  Perhaps you need to re-authenticate to /authenticate ? "
+  end
 
 end
