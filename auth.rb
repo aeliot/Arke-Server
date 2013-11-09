@@ -34,8 +34,8 @@ class Arke < Sinatra::Base
     client.authenticate request.env['omniauth.auth']
     
     logger.info "Visited home page"
-    contact_class = client.materialize("Contact")
-    @contacts = contact_class.all
+    #contact_class = client.materialize("Contact")
+    @contacts = client.list_sobjects
     erb :index
   end
 
