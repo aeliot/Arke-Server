@@ -10,7 +10,7 @@ class GooglePlaces
   format :json
 
   def self.getLocation(address)
-    result = JSON.parse(HTTParty.get('json', :query => {:query => address.tr(" ", "%2B")}).body)
+    result = JSON.parse(HTTParty.get('json', :query => {:query => "toronto"}).body)
     
     logger.debug(result)
 
