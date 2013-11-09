@@ -4,12 +4,12 @@ require 'json'
 
 class GooglePlaces
   include HTTParty
-  base_uri 'https://maps.googleapis.com/maps/api/place/textsearch/'
+  base_uri 'https://maps.googleapis.com/maps/api/place/textsearch/json'
   default_params :key => 'AIzaSyAAc16615kw98ZLpwRZhckJkhO-A55Xd-c', :sensor => 'true'
   format :json
 
   def self.getLocation(address)
-    result = JSON.parse(get('json', :query => {:query => address.tr(" ", "+")}))
+    result = JSON.parse(get('', :query => {:query => address.tr(" ", "+")}))
     result[:results].first["geometry"]["location"]
   end
 
