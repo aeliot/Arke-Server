@@ -1,9 +1,10 @@
 <table>
-<tr><th>Account</th><th>ID</th></tr>
-<% @accounts.each do |account| %>
+<tr><th>Account</th><th>ID</th><th>Address</th> </tr>
+<% @contacts.each do |contact| %>
   <tr>
-     <td><%= account.Name %></td> 
-     <td><%= account.Id %></td>
+     <td><%= contact.Name %></td> 
+     <td><%= contact.Id %></td>
+     <td><%= contact.MailingAddress %></td>
   </tr>
 <% end %>
 </table>  
