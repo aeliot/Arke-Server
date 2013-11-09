@@ -1,5 +1,6 @@
 require 'httparty'
 require 'json'
+require "sinatra/base"
 
 
 class GooglePlaces
