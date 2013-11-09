@@ -21,7 +21,7 @@ class Arke < Sinatra::Base
   end
 
   get '/' do
-    client = Databasedotcom::Client.new :client_id => ENV['SALESFORCE_KEY'], :client_secret => ENV['SALESFORCE_SECRET'], :host => "login.salesforce.com" :authenticate => ENV['omniauth.auth']
+    client = Databasedotcom::Client.new :client_id => ENV['SALESFORCE_KEY'], :client_secret => ENV['SALESFORCE_SECRET'], :host => "login.salesforce.com", :authenticate => ENV['omniauth.auth']
     
     logger.info "Visited home page"
     #contact_class = client.materialize("Contact")
