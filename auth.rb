@@ -35,7 +35,8 @@ class Arke < Sinatra::Base
 
   get '/' do
     logger.info "Visited home page"
-    @contacts= client.query("select Id, Name, Address from Contact")    
+    contact_class = client.materialize("Contact")
+    @contacts = Contact.all
     erb :index
   end
 
