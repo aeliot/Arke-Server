@@ -21,11 +21,12 @@ class Arke < Sinatra::Base
   end
 
   get '/' do
-    client = Databasedotcom::Client.new :client_id => ENV['SALESFORCE_KEY'], :client_secret => ENV['SALESFORCE_SECRET'], :host => "login.salesforce.com", :authenticate => ENV['omniauth.auth']
-    
+    client = Databasedotcom::Client.new :client_id => ENV['SALESFORCE_KEY'], :client_secret => ENV['SALESFORCE_SECRET'], :host => "login.salesforce.com"
+    client.authenticate :token => session['token'], :instance_url => session['instance_url']
+
     logger.info "Visited home page"
     #contact_class = client.materialize("Contact")
-    @contacts = client.list_sobjects
+    @objects = client.list_sobjects
     erb :index
   end
 
