@@ -69,7 +69,7 @@ class Arke < Sinatra::Base
   end
 
   error do
-    "There was an error.  Perhaps you need to re-authenticate to /authenticate ?  Here are the details: " + env['sinatra.error'].name
+    "There was an error.  Perhaps you need to re-authenticate to /authenticate ?  Here are the details: "
   end
 
   run! if app_file == $0
