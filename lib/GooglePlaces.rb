@@ -4,6 +4,7 @@ require "sinatra/base"
 
 
 class GooglePlaces
+  include HTTParty
   base_uri 'https://maps.googleapis.com/maps/api/place/textsearch/json'
   default_params :key => 'AIzaSyAAc16615kw98ZLpwRZhckJkhO-A55Xd-c', :sensor => 'true'
   format :json
