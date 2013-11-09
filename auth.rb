@@ -35,7 +35,7 @@ class Arke < Sinatra::Base
     
     logger.info "Visited home page"
     contact_class = client.materialize("Contact")
-    @contacts = Contact.all
+    ## @contacts = Contact.all
     erb :index
   end
 
