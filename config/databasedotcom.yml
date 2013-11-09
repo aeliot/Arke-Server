@@ -1,7 +1,0 @@
-host: login.salesforce.com
-client_secret: 5793429792635490913
-client_id: 3MVG9A2kN3Bn17hvCrzLmk.KEzfoW._Q3RbJzp3bYhhx0Ip8dzgMaaEWKwEKZ_QK6zQ5ySBDEmF3WJ16aqla.
-sobject_module: SFDC_Models
-debugging: true
-username: aeliot@uwaterloo.ca
-password: testing123

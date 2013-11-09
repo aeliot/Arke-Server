@@ -1,8 +1,10 @@
+require "sinatra/base"
+require 'force'
 require "omniauth"
 require "omniauth-salesforce"
-require 'force'
 
-class WelcomeController < ApplicationController
+
+class Arke < Sinatra::Base
 
   configure do
     enable :logging
@@ -67,10 +69,9 @@ class WelcomeController < ApplicationController
   end
 
   error do
-    "There was an error.  Perhaps you need to re-authenticate to /authenticate ?"
+    "There was an error.  Perhaps you need to re-authenticate to /authenticate ?  Here are the details: " + env['sinatra.error'].name
   end
 
   run! if app_file == $0
-  
-  
+
 end
