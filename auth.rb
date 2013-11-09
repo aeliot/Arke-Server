@@ -30,13 +30,12 @@ class Arke < Sinatra::Base
                             client_id:     ENV['SALESFORCE_KEY'],
                             client_secret: ENV['SALESFORCE_SECRET']
     end
-
   end
 
 
   get '/' do
     logger.info "Visited home page"
-    @accounts= client.query("select Id, Name from Account")    
+    @accounts= client.query("select Id, Name from Contact")    
     erb :index
   end
 
