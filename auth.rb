@@ -33,7 +33,16 @@ class Arke < Sinatra::Base
 
     logger.info "Visited home page"
     contact_class = client.materialize("Contact")
-    @contacts = Contact.all
+    contacts = Contact.all
+
+    @locations = Array.new
+    contacts.each do |contact|
+      latlong = GooglePlaces::getLocation(contact.MailingStreet)
+      locations.push({:name => contact.Name, 
+                       :address => contact.MailingStreet, 
+                       :lat => latlong["lat"], 
+                       :lng => latlong["lng"]})
+    end
     erb :index
   end
 
