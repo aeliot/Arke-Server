@@ -62,9 +62,6 @@ class Arke < Sinatra::Base
     'Goodbye - you are now logged out'
   end
 
-  error Force::UnauthorizedError do
-    redirect "/auth/salesforce"
-  end
 
   error do
     "There was an error.  Perhaps you need to re-authenticate to /authenticate ?  Here are the details: "
