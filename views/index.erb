@@ -1,10 +1,11 @@
 <table>
 <tr><th>Contact</th><th>Address</th><th>Location</th></tr>
-<% @contacts.each do |contact| %>
+<% @locations.each do |contact| %>
    <tr>
-	<td><%= contact.Name %></td>
-	<td><%= contact.MailingStreet %></td>
-	<td><%= contact.Lat_Long__Longitude__s %></td>
+	<td><%= contact.name %></td>
+	<td><%= contact.address %></td>
+	<td><%= contact.lat %></td>
+	<td><%= contact.lng %></td>
    </tr>
 <% end %>
 </table>

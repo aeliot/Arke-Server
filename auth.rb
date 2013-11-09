@@ -22,6 +22,8 @@ class Arke < Sinatra::Base
   end
 
   get '/' do
+    redirect '/authenticate' unless session[:instance_url]
+
     client = Databasedotcom::Client.new :client_id => ENV['SALESFORCE_KEY'], 
     :client_secret => ENV['SALESFORCE_SECRET'], 
     :host => "login.salesforce.com"
