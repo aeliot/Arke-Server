@@ -7,13 +7,19 @@ GEM
       multi_json (~> 1.3)
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
+    addressable (2.3.5)
     atomic (1.1.14)
+    autoparse (0.3.3)
+      addressable (>= 2.3.1)
+      extlib (>= 0.9.15)
+      multi_json (>= 1.0.0)
     daemons (1.1.9)
     databasedotcom (1.3.2)
       activesupport
       json
       multipart-post (~> 1.1)
     eventmachine (1.0.3)
+    extlib (0.9.16)
     faraday (0.8.8)
       multipart-post (~> 1.2.0)
     faraday_middleware (0.9.0)
@@ -23,6 +29,16 @@ GEM
       faraday_middleware (>= 0.8.8)
       hashie (>= 1.2.0, < 2.1)
       json (>= 1.7.5, < 1.9.0)
+    google-api-client (0.6.4)
+      addressable (>= 2.3.2)
+      autoparse (>= 0.3.3)
+      extlib (>= 0.9.15)
+      faraday (~> 0.8.4)
+      jwt (>= 0.1.5)
+      launchy (>= 2.1.1)
+      multi_json (>= 1.0.0)
+      signet (~> 0.4.5)
+      uuidtools (>= 2.1.0)
     hashie (2.0.5)
     httparty (0.12.0)
       json (~> 1.8)
@@ -32,6 +48,8 @@ GEM
     json (1.8.1)
     jwt (0.1.8)
       multi_json (>= 1.5)
+    launchy (2.3.0)
+      addressable (~> 2.3)
     minitest (4.7.5)
     multi_json (1.8.2)
     multi_xml (0.5.5)
@@ -54,6 +72,11 @@ GEM
     rack (1.5.2)
     rack-protection (1.5.1)
       rack
+    signet (0.4.5)
+      addressable (>= 2.2.3)
+      faraday (~> 0.8.1)
+      jwt (>= 0.1.5)
+      multi_json (>= 1.0.0)
     sinatra (1.4.4)
       rack (~> 1.4)
       rack-protection (~> 1.4)
@@ -66,6 +89,7 @@ GEM
       atomic
     tilt (1.4.1)
     tzinfo (0.3.38)
+    uuidtools (2.1.4)
 
 PLATFORMS
   ruby
@@ -73,6 +97,7 @@ PLATFORMS
 DEPENDENCIES
   databasedotcom
   force
+  google-api-client
   httparty
   omniauth
   omniauth-salesforce

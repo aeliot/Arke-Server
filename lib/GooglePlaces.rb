@@ -1,24 +1,18 @@
-require 'httparty'
+require 'net/http'
 require 'json'
-require "sinatra/base"
-
 
 class GooglePlaces
-  include HTTParty
-  base_uri 'https://maps.googleapis.com/maps/api/place/textsearch'
-  default_params :key => 'AIzaSyAAc16615kw98ZLpwRZhckJkhO-A55Xd-c', :sensor => 'true'
-  format :json
-
+  
   def self.getLocation(address)
-    result = JSON.parse(HTTParty.get('json', :query => {:query => "toronto"}).body)
+    uri = URI('https://maps.googleapis.com/maps/api/place/textsearch/json')
+    params = { :key => 'AIzaSyAAc16615kw98ZLpwRZhckJkhO-A55Xd-c',
+      :sensor => 'true',
+      :query => address.tr(" ", "+")}
     
-    logger.debug(result)
-
-    lat = result["results"].first["geometry"]["location"]["lat"]
-    lng = result["results"].first["geometry"]["location"]["lng"]
-    {:lat => lat, :lng => lng}
+    uri.query = URI.encode_www_format(params)
+    raw = Net::HTTP.get(uri)
+    JSON.parse(raw)["results"].first["geometry"]["location"]
   end
-
 end
 
 

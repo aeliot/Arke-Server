@@ -11,4 +11,4 @@ gem 'omniauth-salesforce'
 gem 'force'
 gem 'databasedotcom'
 
-gem 'httparty'
+gem 'net/http'

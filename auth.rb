@@ -45,8 +45,8 @@ class Arke < Sinatra::Base
 
       locations.push({:name => person.Name, 
                        :address => person.MailingStreet, 
-                       :lat => latlong[:lat], 
-                       :lng => latlong[:lng]})
+                       :lat => latlong["lat"], 
+                       :lng => latlong["lng"]})
     end
     erb :index
   end
