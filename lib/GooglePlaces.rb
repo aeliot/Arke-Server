@@ -7,7 +7,7 @@ class GooglePlaces
     uri = URI('https://maps.googleapis.com/maps/api/place/textsearch/json')
     params = { :key => 'AIzaSyAAc16615kw98ZLpwRZhckJkhO-A55Xd-c',
       :sensor => 'true',
-      :query => address.tr(" ", "+")}
+      :query => address.to_s.tr(" ", "+")}
     
     uri.query = URI.encode_www_form(params)
     raw = Net::HTTP.get(uri)
