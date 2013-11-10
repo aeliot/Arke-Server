@@ -70,7 +70,7 @@ class Arke < Sinatra::Base
               loc = geom["location"]
               if(loc.present?)
                 logger.info "GOOD: location"
-                return loc
+                #return loc
               else
                 logger.info "Error: location nil"
               end
