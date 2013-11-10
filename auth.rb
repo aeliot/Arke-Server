@@ -37,11 +37,11 @@ class Arke < Sinatra::Base
 
     locations = Array.new
     contacts.each do |person|
-      if person.MailingStreet == ""
+      #if person.MailingStreet == ""
         latlong = {"lat" => 0, "lng" => 0}
-      else
-        latlong = GooglePlaces::getLocation(person.MailingStreet)
-      end
+      #else
+      #  latlong = GooglePlaces::getLocation(person.MailingStreet)
+      #end
 
       locations.push({:name => person.Name, 
                        :address => person.MailingStreet, 

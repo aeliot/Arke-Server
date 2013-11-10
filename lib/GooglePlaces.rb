@@ -3,7 +3,7 @@ require 'json'
 
 class GooglePlaces
   
-  def self.getLocation(address)
+  def self.getLocation (address)
     uri = URI('https://maps.googleapis.com/maps/api/place/textsearch/json')
     params = { :key => 'AIzaSyAAc16615kw98ZLpwRZhckJkhO-A55Xd-c',
       :sensor => 'true',
