@@ -52,7 +52,9 @@ class Arke < Sinatra::Base
         
         uri.query = URI.encode_www_form(params)
         raw = Net::HTTP.get(uri)
-        #JSON.parse(raw)["results"].first["geometry"]["location"]                                                                                                                                                      
+        #JSON.parse(raw)["results"].first["geometry"]["location"]                                       
+        logger.info uri
+        
         parsedRaw = JSON.parse(raw)
         if(parsedRaw.present?)
           logger.info "GOOD: parsed raw"
