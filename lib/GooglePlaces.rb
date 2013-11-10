@@ -1,5 +1,6 @@
 require 'net/http'
 require 'json'
+require 'sinatra/base'
 
 class GooglePlaces
   
@@ -14,20 +15,28 @@ class GooglePlaces
     #JSON.parse(raw)["results"].first["geometry"]["location"]
     parsedRaw = JSON.parse(raw)
     if(parsedRaw.present?)
+      logger.info "GOOD: parsed raw"
       parsedResults = parsedRaw["results"]
       if(parsedResults.present?)
+        logger.info "GOOD: results"
         geom = parsedResults.first["geometry"]
         if(geom.present?)
+          logger.info "GOOD: geometry"
           loc = geom["location"]
-          return loc
-        else
-          print "Error: geometry nil"
+          if(loc.present?)
+            logger.info "GOOD: location"
+            return loc
+          else
+            logger.info "Error: location nil"
+          end
+        else 
+          logger.info "Error: geometry nil"
         end
       else
-        print "Error: results nil"
+        logger.info "Error: results nil"
       end
     else
-      print "Error: parsed raw nil"
+      logger.info "Error: parsed raw nil"
     end
   end
 end
