@@ -11,7 +11,7 @@ helpers do
   end
 end
 
-def self.getLocation (address)
+def getLocation (address)
   uri = URI('https://maps.googleapis.com/maps/api/place/textsearch/json')
   params = { :key => 'AIzaSyBk66EtdWPunYZZEDHnK80Uye0bjNRzV9Q',
     :sensor => 'true',
