@@ -56,29 +56,35 @@ class Arke < Sinatra::Base
         logger.info uri
         logger.info raw
 
+        latlong = {"lat" => 0, "lng" => 0}
+
         parsedRaw = JSON.parse(raw)
         if(parsedRaw.present?)
-          logger.info "GOOD: parsed raw"
-          parsedResults = parsedRaw["results"]
-          logger.info parsedRaw
-          logger.info parsedResults
-          if(parsedResults.present?)
-            logger.info "GOOD: results"
-            geom = parsedResults.first["geometry"]
-            if(geom.present?)
-              logger.info "GOOD: geometry"
-              loc = geom["location"]
-              if(loc.present?)
-                logger.info "GOOD: location"
-                latlong = loc
+          if(parsedRaw["status"] == "OK")
+            logger.info "GOOD: parsed raw"
+            parsedResults = parsedRaw["results"]
+            logger.info parsedRaw
+            logger.info parsedResults
+            if(parsedResults.present?)
+              logger.info "GOOD: results"
+              geom = parsedResults.first["geometry"]
+              if(geom.present?)
+                logger.info "GOOD: geometry"
+                loc = geom["location"]
+                if(loc.present?)
+                  logger.info "GOOD: location"
+                  latlong = loc
+                else
+                  logger.info "Error: location nil"
+                end
               else
-                logger.info "Error: location nil"
+                logger.info "Error: geometry nil"
               end
             else
-              logger.info "Error: geometry nil"
+              logger.info "Error: results nil"
             end
           else
-            logger.info "Error: results nil"
+            logger.info "Error: Google API " + parsedRaw["status"]
           end
         else
           logger.info "Error: parsed raw nil"
