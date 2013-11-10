@@ -59,6 +59,8 @@ class Arke < Sinatra::Base
         if(parsedRaw.present?)
           logger.info "GOOD: parsed raw"
           parsedResults = parsedRaw["results"]
+          logger.info parsedRaw
+          logger.info parseResutls
           if(parsedResults.present?)
             logger.info "GOOD: results"
             geom = parsedResults.first["geometry"]
