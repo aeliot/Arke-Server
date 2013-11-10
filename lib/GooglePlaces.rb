@@ -1,10 +1,9 @@
 require 'net/http'
 require 'json'
 require 'sinatra'
+require 'logger'
 
-use Rack::Logger
-
-class GooglePlaces
+class GooglePlaces < Sinatra::Application
 
   
   def self.getLocation (address)
