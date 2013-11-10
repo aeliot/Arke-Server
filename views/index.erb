@@ -2,10 +2,10 @@
 <tr><th>Contact</th><th>Address</th><th>Location</th></tr>
 <% @entrys.each do |contact| %>
    <tr>
-	<td><%= contact.name %></td>
-	<td><%= contact.address %></td>
-	<td><%= contact.lat %></td>
-	<td><%= contact.lng %></td>
+	<td><%= contact[:name] %></td>
+	<td><%= contact[:address] %></td>
+	<td><%= contact[:lat] %></td>
+	<td><%= contact[:lng] %></td>
    </tr>
 <% end %>
 </table>
