@@ -1,8 +1,9 @@
 require 'net/http'
 require 'json'
-require 'sinatra/base'
+require 'sinatra'
 
-class GooglePlaces < Sinatra::Base
+class GooglePlaces
+  use Rack::Logger
 
   configure do
     enable :logging
