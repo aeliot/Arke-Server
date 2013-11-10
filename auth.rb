@@ -39,10 +39,10 @@ class Arke < Sinatra::Base
     contacts.each do |person|
       logger.info person.MailingStreet
       logger.info person.MailingStreet.class
-      if person.MailingStreet.blank?
+      if person.MailingStreet.to_s.blank?
         latlong = {"lat" => 0, "lng" => 0}
       else
-        latlong = GooglePlaces::getLocation(person.MailingStreet)
+        latlong = GooglePlaces::getLocation(person.MailingStreet.to_s)
       end
       
       
