@@ -42,6 +42,10 @@ class Arke < Sinatra::Base
       #else
         latlong = GooglePlaces::getLocation(person.MailingStreet)
       #end
+      
+      if latlong == nil
+        latlong = {"lat" => 0, "lng" => 0}
+      end
 
       locations.push({:name => person.Name, 
                        :address => person.MailingStreet, 
