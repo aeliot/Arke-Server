@@ -15,6 +15,7 @@ class GooglePlaces
       JSON.parse(raw)["results"].first["geometry"]["location"]
     else
       {"lat" => 0, "lng" => 0}
+    end
   end
 end
 
