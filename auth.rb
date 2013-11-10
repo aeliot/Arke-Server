@@ -49,6 +49,7 @@ class Arke < Sinatra::Base
                        :lat => latlong["lat"], 
                        :lng => latlong["lng"]})
     end
+    @entrys = locations
     erb :index
   end
 
