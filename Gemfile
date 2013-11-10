@@ -11,4 +11,3 @@ gem 'omniauth-salesforce'
 gem 'force'
 gem 'databasedotcom'
 
-gem 'net/http'
