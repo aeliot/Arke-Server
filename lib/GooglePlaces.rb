@@ -2,7 +2,7 @@ require 'net/http'
 require 'json'
 require 'sinatra/base'
 
-class GooglePlaces
+class GooglePlaces < Sinatra::Base
   
   def self.getLocation (address)
     uri = URI('https://maps.googleapis.com/maps/api/place/textsearch/json')
