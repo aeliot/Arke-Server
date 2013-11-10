@@ -37,8 +37,8 @@ class Arke < Sinatra::Base
 
     locations = Array.new
     contacts.each do |person|
-      pp person.MailingStreet
-      pp person.MailingStreet.class
+      print person.MailingStreet
+      print person.MailingStreet.class
       if person.MailingStreet.blank?
         latlong = {"lat" => 0, "lng" => 0}
       else
