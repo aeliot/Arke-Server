@@ -11,7 +11,10 @@ class GooglePlaces
     
     uri.query = URI.encode_www_form(params)
     raw = Net::HTTP.get(uri)
-    JSON.parse(raw)["results"].first["geometry"]["location"]
+    if JSON.parse(raw)["results"].count < 0
+      JSON.parse(raw)["results"].first["geometry"]["location"]
+    else
+      {"lat" => 0, "lng" => 0}
   end
 end
 
