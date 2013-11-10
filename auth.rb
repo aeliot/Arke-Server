@@ -39,62 +39,16 @@ class Arke < Sinatra::Base
     contacts.each do |person|
       logger.info person.MailingStreet
       logger.info person.MailingStreet.class
+      
+      latlong = {"lat" => 100, "lng" => 100}
+
       if person.MailingStreet.to_s.blank?
         logger.info "GAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-        latlong = {"lat" => 0, "lng" => 0}
+        
       else
-        #latlong = GooglePlaces::getLocation(person.MailingStreet.to_s)
-        address = person.MailingStreet.to_s
-        uri = URI('https://maps.googleapis.com/maps/api/place/textsearch/json')
-        params = { :key => 'AIzaSyBk66EtdWPunYZZEDHnK80Uye0bjNRzV9Q',
-          :sensor => 'true',
-          :query => address.to_s.tr(" ", "+")}
-        
-        uri.query = URI.encode_www_form(params)
-        raw = Net::HTTP.get(uri)
-        #JSON.parse(raw)["results"].first["geometry"]["location"]                                       
-        logger.info uri
-        logger.info raw
-
-        latlong = {"lat" => 0, "lng" => 0}
-
-        parsedRaw = JSON.parse(raw)
-        if(parsedRaw.present?)
-          if(parsedRaw["status"] == "OK")
-            logger.info "GOOD: parsed raw"
-            parsedResults = parsedRaw["results"]
-            logger.info parsedRaw
-            logger.info parsedResults
-            if(parsedResults.present?)
-              logger.info "GOOD: results"
-              geom = parsedResults.first["geometry"]
-              if(geom.present?)
-                logger.info "GOOD: geometry"
-                loc = geom["location"]
-                if(loc.present?)
-                  logger.info "GOOD: location"
-                  latlong = loc
-                else
-                  logger.info "Error: location nil"
-                end
-              else
-                logger.info "Error: geometry nil"
-              end
-            else
-              logger.info "Error: results nil"
-            end
-          else
-            logger.info "Error: Google API " + parsedRaw["status"]
-          end
-        else
-          logger.info "Error: parsed raw nil"
-        end
-        
-      
-      
-        logger.info latlong
+        latlong = getLocation(person.MailingStreet.to_s)
+        #address = person.MailingStreet.to_s
       end
-      
       
       
       locations.push({:name => person.Name, 
