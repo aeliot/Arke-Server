@@ -9,7 +9,7 @@ class GooglePlaces
       :sensor => 'true',
       :query => address.tr(" ", "+")}
     
-    uri.query = URI.encode_www_format(params)
+    uri.query = URI.encode_www_form(params)
     raw = Net::HTTP.get(uri)
     JSON.parse(raw)["results"].first["geometry"]["location"]
   end
