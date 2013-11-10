@@ -42,18 +42,23 @@ def getLocation (address)
             latlong = loc
           else
             logger.info "Error: location nil"
+            latlong = {:lat => 100, :lng => 100}
           end
         else
           logger.info "Error: geometry nil"
+          latlong = {:lat => 100, :lng => 100}
         end
       else
         logger.info "Error: results nil"
+        latlong = {:lat => 100, :lng => 100}
       end
     else
       logger.info "Error: Google API " + parsedRaw["status"]
+      latlong = {:lat => 100, :lng => 100}
     end
   else
     logger.info "Error: parsed raw nil"
+    latlong = {:lat => 100, :lng => 100}
   end
   
   
