@@ -54,13 +54,14 @@ class Arke < Sinatra::Base
         raw = Net::HTTP.get(uri)
         #JSON.parse(raw)["results"].first["geometry"]["location"]                                       
         logger.info uri
-        
+        logger.info raw
+
         parsedRaw = JSON.parse(raw)
         if(parsedRaw.present?)
           logger.info "GOOD: parsed raw"
           parsedResults = parsedRaw["results"]
           logger.info parsedRaw
-          logger.info parseResutls
+          logger.info parsedResults
           if(parsedResults.present?)
             logger.info "GOOD: results"
             geom = parsedResults.first["geometry"]
