@@ -46,7 +46,7 @@ class Arke < Sinatra::Base
         #latlong = GooglePlaces::getLocation(person.MailingStreet.to_s)
         address = person.MailingStreet.to_s
         uri = URI('https://maps.googleapis.com/maps/api/place/textsearch/json')
-        params = { :key => 'AIzaSyAAc16615kw98ZLpwRZhckJkhO-A55Xd-c',
+        params = { :key => 'AIzaSyBk66EtdWPunYZZEDHnK80Uye0bjNRzV9Q',
           :sensor => 'true',
           :query => address.to_s.tr(" ", "+")}
         
