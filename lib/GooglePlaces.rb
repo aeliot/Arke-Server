@@ -3,6 +3,14 @@ require 'json'
 require 'sinatra/base'
 
 class GooglePlaces < Sinatra::Base
+
+  configure do
+    enable :logging
+    enable :sessions
+    set :show_exceptions, false
+    set :session_secret, ENV['SECRET']
+  end
+
   
   def self.getLocation (address)
     uri = URI('https://maps.googleapis.com/maps/api/place/textsearch/json')
