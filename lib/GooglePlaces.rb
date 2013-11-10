@@ -6,13 +6,6 @@ use Rack::Logger
 
 class GooglePlaces
 
-  configure do
-    enable :logging
-    enable :sessions
-    set :show_exceptions, false
-    set :session_secret, ENV['SECRET']
-  end
-
   
   def self.getLocation (address)
     uri = URI('https://maps.googleapis.com/maps/api/place/textsearch/json')
